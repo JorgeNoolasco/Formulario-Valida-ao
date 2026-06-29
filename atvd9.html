@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 09</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .mandatory {
+            color: red;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            width: 350px;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        .message9 {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 10px;
+            width: 350px;
+            text-align: center;
+            margin: 0 auto;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+   
+    <h1>Orçamento de Pintura</h1>
+
+    <form>
+
+        <label>Nome do Cliente: <span class="mandatory">*</span></label>
+        <input type="text" id="nome">
+
+        <label>Área (m²): <span class="mandatory">*</span></label>
+        <input type="number" id="area">
+
+        <label>Valor por m²: <span class="mandatory">*</span></label>
+        <input type="number" id="valor">
+
+    </form>
+
+    <button type="button" id="calcularButton" onclick="calcular()">
+        Calcular
+    </button>
+
+    <div class="message9">
+        <p id="message9"></p>
+    </div>
+
+
+    <button type="button" onclick="window.location.href='atvd8.html'">
+        Atividade Anterior
+    </button>
+
+    <button type="button" onclick="window.location.href='atvd10.html'">
+        Próxima Atividade
+    </button>
+
+    <script>
+
+        function calcular() {
+
+            let nome = document.getElementById("nome").value;
+            let area = document.getElementById("area").value;
+            let valor = document.getElementById("valor").value;
+
+            let messageBox = document.querySelector(".message9");
+            let messageText = document.getElementById("message9");
+
+            if (nome == "" || area == "" || valor == "") {
+                messageBox.style.display = "block";
+                messageText.innerHTML = "Preencha todos os campos obrigatórios.";
+                messageText.style.color = "red";
+                document.getElementById("nome").focus();
+                return;
+            }
+
+            let total = Number(area) * Number(valor);
+
+            messageBox.style.display = "block";
+            messageText.style.color = "green";
+            messageText.innerHTML =
+                "Cliente: " + nome +
+                "<br>Valor do orçamento: R$ " + total.toFixed(2);
+
+            document.getElementById("nome").value = "";
+            document.getElementById("area").value = "";
+            document.getElementById("valor").value = "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

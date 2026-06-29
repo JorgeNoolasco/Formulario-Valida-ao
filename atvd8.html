@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 08</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffbf76;
+        }
+
+        .mandatory {
+            color: red;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+
+        form{
+            width: 350px;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        button{
+            display: block;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #cadastroButton {
+            background-color: #9fd5ff;
+        }
+
+        .message8 {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 10px;
+            width: 350px;
+            text-align: center;
+            margin: 0 auto;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<!-- Exercício 8 – Cadastro de Funcionário  -->
+<body>
+    <h1>Exercício 08</h1>
+    <h2>Cadastro de Funcionário</h2>
+    <form>
+        <label for="name">Nome do funcionário: <span class="mandatory">*</span></label>
+        <input type="text" id="name" name="name">
+
+        <label for="jobTitle">Cargo: <span class="mandatory">*</span></label>
+        <input type="text" id="jobTitle" name="jobTitle" required>
+
+        <label for="salary">Salário: <span class="mandatory">*</span></label>
+        <input type="number" id="salary" name="salary" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone">
+    </form>
+
+    <button id="cadastroButton" onclick="realizarCadastro()" type="button">Realizar Cadastro</button>
+
+    <div class="message8">
+        <p id="message8"></p>
+    </div>
+
+    <button type="button" onclick="window.location.href='atvd7.html'">
+        Atividade Anterior
+    </button>
+    <button type="button" onclick="window.location.href='atvd9.html'">
+        Próxima Atividade
+    </button>
+
+    <script>
+        function realizarCadastro() {
+            let name = document.getElementById("name").value;
+            let jobTitle = document.getElementById("jobTitle").value;
+            let salary = document.getElementById("salary").value;
+            let telefone = document.getElementById("telefone").value;
+
+            let message8 = document.getElementById("message8");
+
+            if (name === "" || jobTitle === "" || salary     === "") {
+                message8.style.display = "block";
+                message8.innerHTML = "Por favor, preencha todos os campos obrigatórios.";
+                message8.style.color = "red";
+            }
+
+            else {
+                message8.style.display = "block";
+                message8.style.color = "green";
+                message8.innerHTML = "Cadastro realizado com sucesso!<br><br>Funcionário: " + name + "<br><br>Cargo: " + jobTitle + "<br><br>Salário: R$ " + salary ;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 06</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .mandatory {
+            color: red;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+
+        form{
+            width: 350px;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        button{
+            display: block;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        .message6 {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 10px;
+            width: 350px;
+            text-align: center;
+            margin: 0 auto;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<!-- Exercício 6 – Agendamento de Consulta  -->
+<body>
+    <h1>Exercício 06</h1>
+    <h2>Agendamento de Consulta</h2>
+    <form>
+        <label for="name">Nome do paciente: <span class="mandatory">*</span></label>
+        <input type="text" id="name" name="name">
+
+        <label for="date">Data: <span class="mandatory">*</span></label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Horário: <span class="mandatory">*</span></label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="observations">Observações:</label>
+        <input type="text" id="observations" name="observations">
+    </form>
+
+    <button onclick="agendar()" type="button">Agendar</button>
+
+    <div class="message6">
+        <p id="message6"></p>
+    </div>
+
+    <button type="button" onclick="window.location.href='atvd6.html'">
+        Atividade Anterior
+    </button>
+    <button type="button" onclick="window.location.href='atvd7.html'">
+        Próxima Atividade
+    </button>
+
+    <script>
+        function agendar() {
+            let name = document.getElementById("name").value;
+            let date = document.getElementById("date").value;
+            let time = document.getElementById("time").value;
+            let observations = document.getElementById("observations").value;
+
+            let message6 = document.getElementById("message6");
+
+            if (name === "" || date === "" || time === "") {
+                message6.style.display = "block";
+                message6.innerHTML = "Por favor, preencha todos os campos obrigatórios.";
+                message6.style.color = "red";
+                document.getElementById("name").focus();
+            }
+
+            else {
+                message6.style.display = "block";
+                message6.style.color = "black";
+                message6.innerHTML = "Consulta agendada com sucesso!<br><br>Paciente: " + name + "<br><br>Data: " + date + "<br><br>Horário: " + time + "<br><br>Observações: " + observations;
+            }
+        }
+    </script>
+
+</body>
+</html>

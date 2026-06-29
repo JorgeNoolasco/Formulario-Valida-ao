@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .mandatory {
+            color: red;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 120px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #9fd5ff;
+        }
+
+        form {
+            width: 350px;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        .message10 {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 10px;
+            width: 350px;
+            text-align: center;
+            margin: 0 auto;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <img src="logo.jpg" alt="Logo da Empresa">
+
+    <h1>Cadastro de Empresa</h1>
+
+    <form>
+
+        <label>Nome da Empresa <span class="mandatory">*</span></label>
+        <input type="text" id="empresa">
+
+        <label>E-mail <span class="mandatory">*</span></label>
+        <input type="email" id="email">
+
+        <label>Cidade</label>
+        <input type="text" id="cidade">
+
+        <label>Telefone</label>
+        <input type="text" id="telefone">
+
+    </form>
+
+    <button type="button" id="btn" onclick="cadastrar()">
+        Cadastrar Empresa
+    </button>
+
+    <div class="message10">
+        <p id="message10"></p>
+    </div>
+
+    <button type="button" onclick="window.location.href='atvd9.html'">
+        Atividade Anterior
+    </button>
+
+    <script>
+
+        function cadastrar() {
+
+            let empresa = document.getElementById("empresa").value;
+            let email = document.getElementById("email").value;
+            let cidade = document.getElementById("cidade").value;
+            let telefone = document.getElementById("telefone").value;
+
+            let messageBox = document.querySelector(".message10");
+            let messageText = document.getElementById("message10");
+
+            if (empresa == "" || email == "") {
+                messageBox.style.display = "block";
+                messageText.innerHTML = "Preencha os campos obrigatórios.";
+                messageText.style.color = "red";
+                document.getElementById("empresa").focus();
+                return;
+            }
+
+            messageBox.style.display = "block";
+            messageText.style.color = "green";
+            messageText.innerHTML =
+                "Empresa cadastrada com sucesso!<br><br>" +
+                "Empresa: " + empresa +
+                "<br>Cidade: " + cidade;
+
+            let btn = document.getElementById("btn");
+            btn.innerHTML = "Cadastro Finalizado";
+            btn.disabled = true;
+
+            document.getElementById("empresa").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("cidade").value = "";
+            document.getElementById("telefone").value = "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

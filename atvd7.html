@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 07</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .mandatory {
+            color: red;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ca1010
+        }
+        h2 {
+            text-align: center;
+            color: #ca1010ad
+        }
+
+        form{
+            width: 400px;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+            margin-top: 30px;
+            border: 2px solid #ca1010;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        button{
+            display: block;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        .message7 {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 10px;
+            width: 350px;
+            text-align: center;
+            margin: 0 auto;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<!-- Exercício 7 – Pedido de Pizza  -->
+<body>
+    <h1>Exercício 07</h1>
+    <h2>Pedido de Pizza</h2>
+    <form>
+        <label for="name">Nome do cliente: <span class="mandatory">*</span></label>
+        <input type="text" id="name" name="name">
+
+        <label for="flavor">Sabor: <span class="mandatory">*</span></label>
+        <input type="text" id="flavor" name="flavor" required>
+
+        <label for="quantity">Quantidade: <span class="mandatory">*</span></label>
+        <input type="number" id="quantity" name="quantity" required>
+
+        <label for="observations">Observações:</label>
+        <input type="text" id="observations" name="observations">
+    </form>
+
+    <button onclick="realizarPedido()" type="button">Realizar Pedido</button>
+
+    <div class="message7">
+        <p id="message7"></p>
+    </div>
+
+    <button type="button" onclick="window.location.href='atvd8.html'">
+        Próxima Atividade
+    </button>
+
+    <script>
+        function realizarPedido() {
+            let name = document.getElementById("name").value;
+            let flavor = document.getElementById("flavor").value;
+            let quantity = document.getElementById("quantity").value;
+            let total = quantity * 50;
+            let observations = document.getElementById("observations").value;
+
+            let message7 = document.getElementById("message7");
+
+            if (name === "" || flavor === "" || quantity === "") {
+                message7.style.display = "block";
+                message7.innerHTML = "Por favor, preencha todos os campos obrigatórios.";
+                message7.style.color = "red";
+            }
+
+            else {
+                message7.style.display = "block";
+                message7.style.color = "green";
+                message7.innerHTML = "Pedido realizado com sucesso!<br><br>Cliente: " + name + "<br><br>Sabor: " + flavor + "<br><br>Quantidade: " + quantity + "<br><br>Total: R$ " + total.toFixed(2) + "<br><br>Observações: " + observations;
+            }
+        }
+    </script>
+
+</body>
+</html>
